@@ -1048,8 +1048,16 @@
                 </div>
                 
              <div class="swipe-actions">
-                 <button class="swipe-btn reject" onclick="swipeCard('left')">✕</button>
-                 <button class="swipe-btn accept" onclick="swipeCard('right')">✓</button>
+                 <button class="swipe-btn reject" onclick="swipeCard('left')">
+                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                         <polyline points="15,18 9,12 15,6"></polyline>
+                     </svg>
+                 </button>
+                 <button class="swipe-btn accept" onclick="swipeCard('right')">
+                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                         <polyline points="9,18 15,12 9,6"></polyline>
+                     </svg>
+                 </button>
              </div>
 
              <div class="swipe-indicators" id="swipeIndicators">
