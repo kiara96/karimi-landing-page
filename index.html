@@ -200,114 +200,43 @@
             font-size: 1.125rem;
         }
 
-        /* Demo Section */
-        .demo-section {
+        /* Mascot Visual */
+        .mascot-visual {
             text-align: center;
-        }
-
-        .demo-label {
-            font-size: 0.875rem;
-            color: #64748b;
-            margin-bottom: 1rem;
-        }
-
-        .card-stack {
             position: relative;
-            height: 20rem;
-            width: 100%;
-            max-width: 24rem;
-            margin: 0 auto 1.5rem;
         }
 
-        .job-card {
-            position: absolute;
-            inset: 0;
-            background: white;
-            border-radius: 0.75rem;
-            border: 1px solid #e2e8f0;
-            padding: 1.5rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            transition: all 0.5s ease;
-            opacity: 0;
-            transform: scale(0.95);
-        }
-
-        .job-card.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .job-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: #0f172a;
-            margin-bottom: 0.25rem;
-        }
-
-        .job-company {
-            color: #64748b;
-            margin-bottom: 1rem;
-        }
-
-        .job-location {
-            font-size: 0.875rem;
-            color: #94a3b8;
-            margin-bottom: 0.5rem;
-        }
-
-        .job-salary {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #374151;
-            margin-bottom: 1rem;
-        }
-
-        .job-skills {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .skill-tag {
-            padding: 0.25rem 0.5rem;
-            background: #f1f5f9;
-            color: #374151;
-            font-size: 0.75rem;
-            border-radius: 9999px;
-        }
-
-        .job-type {
-            font-size: 0.75rem;
-            color: #94a3b8;
-        }
-
-        .swipe-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-
-        .indicator {
+        .mascot-large {
+            width: 8rem;
+            height: 8rem;
+            background: #1e293b;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            position: relative;
+            animation: bounce 2s infinite;
         }
 
-        .indicator-dot {
-            width: 0.75rem;
-            height: 0.75rem;
+        .mascot-large::after {
+            content: '';
+            width: 2rem;
+            height: 2rem;
+            background: white;
             border-radius: 50%;
         }
 
-        .indicator-dot.red { background: #ef4444; }
-        .indicator-dot.yellow { background: #eab308; }
-        .indicator-dot.green { background: #22c55e; }
-
-        .indicator-text {
-            font-size: 0.75rem;
-            color: #64748b;
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
 
         /* Section Styles */
@@ -347,210 +276,229 @@
             margin: 0 auto 3rem;
         }
 
-        /* Grid Layouts */
-        .grid-3 {
+        /* How It Works */
+        .steps-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
         }
 
         @media (min-width: 768px) {
-            .grid-3 {
+            .steps-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
 
-        .grid-4 {
+        .step-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 3rem;
+            height: 3rem;
+            background: #1e293b;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 0 auto 1rem;
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Who It's For */
+        .who-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .who-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .who-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .who-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .who-icon {
+            width: 4rem;
+            height: 4rem;
+            background: #f1f5f9;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .who-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .who-description {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Why Karimi */
+        .features-carousel {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scroll-snap-type: x mandatory;
+        }
+
+        .feature-card {
+            min-width: 300px;
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            scroll-snap-align: start;
+        }
+
+        .feature-icon {
+            width: 3rem;
+            height: 3rem;
+            background: #1e293b;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Behind the Magic */
+        .tech-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
 
         @media (min-width: 768px) {
-            .grid-4 {
+            .tech-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (min-width: 1024px) {
-            .grid-4 {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        @media (min-width: 1024px) {
-            .grid-2 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Cards */
-        .card {
+        .tech-card {
             background: white;
-            border-radius: 0.5rem;
+            border-radius: 1rem;
             padding: 2rem;
-            transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        .card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-gray {
-            background: #f1f5f9;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .card-gray:hover {
-            background: #f8fafc;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #0f172a;
-            margin-bottom: 1rem;
-            transition: opacity 0.3s ease;
-        }
-
-        .card-hover-text {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            color: #64748b;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .card-gray:hover .card-title {
-            opacity: 0;
-        }
-
-        .card-gray:hover .card-hover-text {
-            opacity: 1;
-        }
-
-        /* AI Model Cards */
-        .ai-card {
-            background: white;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .ai-card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .ai-icon {
-            width: 3rem;
-            height: 3rem;
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-
-        .ai-icon-inner {
-            width: 1.5rem;
-            height: 1.5rem;
-            border-radius: 0.25rem;
-        }
-
-        .ai-icon.blue { background: #dbeafe; }
-        .ai-icon.blue .ai-icon-inner { background: #2563eb; }
-        .ai-icon.green { background: #dcfce7; }
-        .ai-icon.green .ai-icon-inner { background: #16a34a; }
-        .ai-icon.purple { background: #f3e8ff; }
-        .ai-icon.purple .ai-icon-inner { background: #9333ea; }
-        .ai-icon.orange { background: #fed7aa; }
-        .ai-icon.orange .ai-icon-inner { background: #ea580c; }
-
-        .ai-title {
+        .tech-title {
+            font-size: 1.125rem;
             font-weight: 600;
             color: #0f172a;
             margin-bottom: 0.5rem;
         }
 
-        .ai-description {
-            font-size: 0.875rem;
+        .tech-description {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-photo {
+            width: 6rem;
+            height: 6rem;
+            background: #f1f5f9;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
             color: #64748b;
         }
 
-        /* Two Engines Section */
-        .engine-card {
-            background: white;
-            border-radius: 0.5rem;
-            padding: 2rem;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .engine-card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .engine-title {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .team-name {
             font-size: 1.25rem;
             font-weight: 600;
             color: #0f172a;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
-        .engine-subtitle {
+        .team-role {
             color: #64748b;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .engine-list {
-            list-style: none;
-        }
-
-        .engine-list li {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.75rem;
-            color: #374151;
-        }
-
-        .engine-list li::before {
-            content: '';
-            width: 0.5rem;
-            height: 0.5rem;
-            background: #94a3b8;
-            border-radius: 50%;
-        }
-
-        .analytics-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .analytics-item {
-            background: #f8fafc;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            text-align: center;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #374151;
+        .team-bio {
+            color: #64748b;
+            line-height: 1.6;
         }
 
         /* Video Section */
@@ -576,10 +524,10 @@
 
         /* CTA Section */
         .cta-card {
-            background: white;
-            border-radius: 0.5rem;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-radius: 1rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
+            padding: 3rem 2rem;
             text-align: center;
             max-width: 32rem;
             margin: 0 auto;
@@ -592,25 +540,25 @@
             gap: 0.5rem;
             font-size: 1.875rem;
             font-weight: 700;
-            color: #0f172a;
+            color: white;
             margin-bottom: 1.5rem;
         }
 
-        .mascot-large {
+        .cta-mascot {
             width: 2rem;
             height: 2rem;
-            background: #1e293b;
+            background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .mascot-large::after {
+        .cta-mascot::after {
             content: '';
             width: 0.5rem;
             height: 0.5rem;
-            background: white;
+            background: #1e293b;
             border-radius: 50%;
         }
 
@@ -689,7 +637,7 @@
     </style>
 </head>
 <body>
-     Header 
+    <!-- Header -->
     <header class="header" id="header">
         <div class="container">
             <div class="header-content">
@@ -704,162 +652,188 @@
                         </svg>
                         Watch demo
                     </a>
-                    <a href="#cta" class="btn btn-primary">Join waitlist</a>
+                    <a href="#cta" class="btn btn-primary">Join Karimi for free</a>
                 </div>
             </div>
         </div>
     </header>
 
-     Hero Section 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">Swipe your next job.</h1>
-                    <p class="hero-subtitle">A playful, private way to match jobs, people, and teams—powered by recommendations and analytics.</p>
+                    <p class="hero-subtitle">Karimi makes hiring and job hunting playful, smart, and human.</p>
                     <div class="hero-buttons">
                         <a href="#cta" class="btn btn-primary btn-large">
                             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12,5 19,12 12,19"></polyline>
                             </svg>
-                            Join waitlist
+                            Get free credits
                         </a>
-                        <a href="#how-it-works" class="btn btn-outline btn-large">How it works</a>
+                        <a href="#how-it-works" class="btn btn-outline btn-large">Try Karimi today</a>
                     </div>
                 </div>
 
-                <div class="demo-section">
-                    <p class="demo-label">See the swipe in action</p>
-                    <div class="card-stack" id="cardStack">
-                         Job cards will be inserted here by JavaScript 
-                    </div>
-                    <div class="swipe-indicators">
-                        <div class="indicator">
-                            <div class="indicator-dot red"></div>
-                            <span class="indicator-text">Not my type</span>
-                        </div>
-                        <div class="indicator">
-                            <div class="indicator-dot yellow"></div>
-                            <span class="indicator-text">Second look</span>
-                        </div>
-                        <div class="indicator">
-                            <div class="indicator-dot green"></div>
-                            <span class="indicator-text">Perfect match</span>
-                        </div>
-                    </div>
+                <div class="mascot-visual">
+                    <div class="mascot-large"></div>
                 </div>
             </div>
         </div>
     </section>
 
-     How Karimi Works Section 
+    <!-- How It Works Section -->
     <section class="section section-white" id="how-it-works">
         <div class="container">
-            <div class="section-title-with-icon">
-                <div class="mascot-icon"></div>
-                <h2 class="section-title">Karimi makes hiring fun & fair</h2>
-            </div>
+            <h2 class="section-title">How it works</h2>
+            <p class="section-subtitle">Three easy steps to find your perfect match</p>
 
-            <div class="grid-3">
-                <div class="card card-gray">
-                    <h3 class="card-title">For Job Seekers</h3>
-                    <div class="card-hover-text">Swipe privately. Learn what fits.</div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Create your profile</h3>
+                    <p class="step-description">Set up your profile or vacancy in minutes with our intuitive interface.</p>
                 </div>
-                <div class="card card-gray">
-                    <h3 class="card-title">For Companies</h3>
-                    <div class="card-hover-text">Hire playfully. Fast, personal, on-brand.</div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Swipe & interact</h3>
+                    <p class="step-description">Start swiping and the system learns from your preferences in real-time.</p>
                 </div>
-                <div class="card card-gray">
-                    <h3 class="card-title">For Professionals</h3>
-                    <div class="card-hover-text">Explore freely. No posts, no pressure.</div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Get smarter matches</h3>
+                    <p class="step-description">Receive instant insights and matches that get better with every interaction.</p>
                 </div>
             </div>
         </div>
     </section>
 
-     AI Technology Section 
+    <!-- Who It's For Section -->
     <section class="section section-gray">
         <div class="container">
-            <h2 class="section-title">Powered by fine-tuned AI</h2>
-            <p class="section-subtitle">We use multiple large language models, each fine-tuned for specific aspects of the hiring process, to deliver the most tailored and effective matching experience.</p>
+            <h2 class="section-title">Who it's for</h2>
 
-            <div class="grid-4">
-                <div class="ai-card">
-                    <div class="ai-icon blue">
-                        <div class="ai-icon-inner"></div>
+            <div class="who-grid">
+                <div class="who-card">
+                    <div class="who-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
                     </div>
-                    <h3 class="ai-title">Resume Analysis</h3>
-                    <p class="ai-description">Specialized model for extracting and understanding candidate skills and experience</p>
+                    <h3 class="who-title">Companies</h3>
+                    <p class="who-description">Personalized, fast, engaging recruitment that finds the right talent quickly.</p>
                 </div>
-                <div class="ai-card">
-                    <div class="ai-icon green">
-                        <div class="ai-icon-inner"></div>
+                <div class="who-card">
+                    <div class="who-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
                     </div>
-                    <h3 class="ai-title">Job Matching</h3>
-                    <p class="ai-description">Fine-tuned for semantic matching between candidates and job requirements</p>
+                    <h3 class="who-title">Job Seekers</h3>
+                    <p class="who-description">Private, fun, effective job discovery that respects your preferences.</p>
                 </div>
-                <div class="ai-card">
-                    <div class="ai-icon purple">
-                        <div class="ai-icon-inner"></div>
-                    </div>
-                    <h3 class="ai-title">Culture Fit</h3>
-                    <p class="ai-description">Trained to assess personality and cultural alignment factors</p>
-                </div>
-                <div class="ai-card">
-                    <div class="ai-icon orange">
-                        <div class="ai-icon-inner"></div>
-                    </div>
-                    <h3 class="ai-title">Market Intelligence</h3>
-                    <p class="ai-description">Analyzes salary trends, skill demand, and market dynamics</p>
-                </div>
-            </div>
-
-            <div class="card" style="background: #f8fafc; max-width: 64rem; margin: 3rem auto 0;">
-                <h3 style="font-size: 1.25rem; font-weight: 600; color: #0f172a; margin-bottom: 1rem;">Why multiple specialized models?</h3>
-                <p style="color: #64748b; line-height: 1.6;">Instead of relying on a single general-purpose AI, we've developed and fine-tuned separate models for each critical aspect of hiring. This approach allows us to achieve higher accuracy in resume parsing, more nuanced job matching, better cultural fit assessment, and deeper market insights—resulting in matches that truly work for both candidates and companies.</p>
             </div>
         </div>
     </section>
 
-     Two Engines Section 
+    <!-- Why Karimi Section -->
     <section class="section section-white">
         <div class="container">
-            <h2 class="section-title">Two engines. One match.</h2>
+            <h2 class="section-title">Why Karimi</h2>
+            <p class="section-subtitle">Playful front-end, powerful back-end</p>
 
-            <div class="grid-2">
-                <div class="engine-card">
-                    <div class="engine-title">
-                        <div class="mascot-icon"></div>
-                        Recommendations
+            <div class="features-carousel">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9,11 12,14 22,4"></polyline>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                        </svg>
                     </div>
-                    <p class="engine-subtitle">Adapts to swipes and feedback in real time</p>
-                    <ul class="engine-list">
-                        <li>Ranks candidates for companies</li>
-                        <li>Suggests vacancies to seekers</li>
-                        <li>Suggests companies/projects to professionals</li>
-                    </ul>
+                    <h3 class="feature-title">Dynamic Learning</h3>
+                    <p class="feature-description">Our recommendations adapt to your swipes and feedback in real-time.</p>
                 </div>
-
-                <div class="engine-card">
-                    <div class="engine-title">
-                        <div class="mascot-icon"></div>
-                        Analytics
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
+                        </svg>
                     </div>
-                    <p class="engine-subtitle">User analytics and labour-market insights</p>
-                    <div class="analytics-grid">
-                        <div class="analytics-item">Fit score</div>
-                        <div class="analytics-item">Time-to-match</div>
-                        <div class="analytics-item">Hot skills</div>
-                        <div class="analytics-item">Market trend</div>
+                    <h3 class="feature-title">Real-time Controls</h3>
+                    <p class="feature-description">Recruiters can adjust preferences and see results re-rank instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                        </svg>
                     </div>
+                    <h3 class="feature-title">Multi-dimensional Ranking</h3>
+                    <p class="feature-description">Compare candidates across skills, culture, and potential fit.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Transparent Explainability</h3>
+                    <p class="feature-description">Every match shows why it fits, not just a score.</p>
                 </div>
             </div>
         </div>
     </section>
 
-     Demo Section 
-    <section class="section section-gray" id="demo">
+    <!-- Behind the Magic Section -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Behind the magic</h2>
+            <p class="section-subtitle">Behind the playful design is a <strong>cutting-edge recommendation engine</strong> that treats hiring with the same intelligence as the best consumer apps.</p>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3 class="tech-title">Semantic breakdown</h3>
+                    <p class="tech-description">Vacancies and CVs are decomposed into skills, responsibilities, education, promotions, geographies, and more.</p>
+                </div>
+                <div class="tech-card">
+                    <h3 class="tech-title">Instruction-tuned embeddings</h3>
+                    <p class="tech-description">Each dimension is encoded with AI prompts that capture <em>intent</em>, not just keywords.</p>
+                </div>
+                <div class="tech-card">
+                    <h3 class="tech-title">Noise reduction</h3>
+                    <p class="tech-description">We standardize and enrich data to catch synonyms, misspellings, and hidden skills.</p>
+                </div>
+                <div class="tech-card">
+                    <h3 class="tech-title">Multi-channel ranking</h3>
+                    <p class="tech-description">Candidates and roles are compared across six+ perspectives, then fused into a single, fair relevance score.</p>
+                </div>
+                <div class="tech-card">
+                    <h3 class="tech-title">Human-in-the-loop controls</h3>
+                    <p class="tech-description">Recruiters adjust section weights in real time → results re-rank instantly.</p>
+                </div>
+                <div class="tech-card">
+                    <h3 class="tech-title">Explainability baked in</h3>
+                    <p class="tech-description">Every match shows <em>why</em> it fits, not just a score.</p>
+                </div>
+            </div>
+
+            <div class="card" style="background: #f8fafc; max-width: 64rem; margin: 3rem auto 0; padding: 2rem; border-radius: 1rem;">
+                <p style="color: #64748b; line-height: 1.6; font-style: italic;">The result? Matches that feel effortless on the surface, but are backed by AI rigor that outperforms naive LLM/embedding matchers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="section section-white" id="demo">
         <div class="container max-w-4xl text-center">
             <div class="section-title-with-icon">
                 <div class="mascot-icon"></div>
@@ -874,7 +848,6 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen>
                     </iframe>
-
                 </div>
             </div>
 
@@ -884,7 +857,7 @@
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12,5 19,12 12,19"></polyline>
                     </svg>
-                    Join waitlist
+                    Join Karimi for free
                 </a>
                 <div>
                     <a href="mailto:info@karimi.ai" class="footer-link">Contact us</a>
@@ -893,25 +866,55 @@
         </div>
     </section>
 
-     Final CTA Section 
-    <section class="section section-white" id="cta">
+    <!-- Coming Soon Section -->
+    <section class="section section-gray">
+        <div class="container text-center">
+            <h2 class="section-title">Coming soon – be part of the early community</h2>
+            <p class="section-subtitle">Join us in building the future of hiring</p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="section-title">The people building Karimi for you</h2>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-photo">👨‍💻</div>
+                    <h3 class="team-name">Alex Chen</h3>
+                    <p class="team-role">Founder & CEO</p>
+                    <p class="team-bio">Former AI researcher at Google, passionate about making hiring more human through technology.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">👩‍💻</div>
+                    <h3 class="team-name">Sarah Kim</h3>
+                    <p class="team-role">CTO</p>
+                    <p class="team-bio">Ex-Uber engineer with 10+ years building scalable systems and recommendation engines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="section section-gray" id="cta">
         <div class="container">
             <div class="cta-card">
                 <div class="cta-title">
-                    <div class="mascot-large"></div>
-                    Ready to swipe smarter?
+                    <div class="cta-mascot"></div>
+                    Ready to swipe your next job?
                 </div>
 
                 <form class="email-form" onsubmit="handleEmailSubmit(event)">
                     <input type="email" class="email-input" placeholder="Enter your email" required>
-                    <button type="submit" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 1.125rem;">Join waitlist</button>
+                    <button type="submit" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 1.125rem; background: white; color: #1e293b;">Join Karimi for free</button>
                 </form>
                 <p class="privacy-text">Private by default • No spam</p>
             </div>
         </div>
     </section>
 
-     Footer 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -932,84 +935,6 @@
     </footer>
 
     <script>
-        // Job cards data
-        const jobCards = [
-            {
-                title: "Senior Frontend Developer",
-                company: "Booking.com",
-                location: "Amsterdam, Netherlands",
-                salary: "€75,000 - €95,000",
-                skills: ["React", "TypeScript"],
-                type: "Full-time"
-            },
-            {
-                title: "Développeur Full Stack",
-                company: "BlaBlaCar",
-                location: "Paris, France",
-                salary: "€60,000 - €80,000",
-                skills: ["Vue.js", "Node.js"],
-                type: "CDI"
-            },
-            {
-                title: "Data Scientist",
-                company: "SAP",
-                location: "Berlin, Germany",
-                salary: "€70,000 - €90,000",
-                skills: ["Python", "ML"],
-                type: "Full-time"
-            },
-            {
-                title: "Product Manager",
-                company: "Criteo",
-                location: "Paris, France",
-                salary: "€80,000 - €100,000",
-                skills: ["Strategy", "Analytics"],
-                type: "CDI"
-            },
-            {
-                title: "Backend Engineer",
-                company: "Glovo",
-                location: "Barcelona, Spain",
-                salary: "€55,000 - €75,000",
-                skills: ["Java", "Microservices"],
-                type: "Full-time"
-            }
-        ];
-
-        let currentCardIndex = 0;
-
-        // Create job cards
-        function createJobCards() {
-            const cardStack = document.getElementById('cardStack');
-            
-            jobCards.forEach((job, index) => {
-                const card = document.createElement('div');
-                card.className = `job-card ${index === 0 ? 'active' : ''}`;
-                
-                card.innerHTML = `
-                    <div class="job-title">${job.title}</div>
-                    <div class="job-company">${job.company}</div>
-                    <div class="job-location">${job.location}</div>
-                    <div class="job-salary">${job.salary}</div>
-                    <div class="job-skills">
-                        ${job.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
-                    </div>
-                    <div class="job-type">${job.type}</div>
-                `;
-                
-                cardStack.appendChild(card);
-            });
-        }
-
-        // Rotate cards
-        function rotateCards() {
-            const cards = document.querySelectorAll('.job-card');
-            cards[currentCardIndex].classList.remove('active');
-            
-            currentCardIndex = (currentCardIndex + 1) % jobCards.length;
-            cards[currentCardIndex].classList.add('active');
-        }
-
         // Handle header scroll
         function handleScroll() {
             const header = document.getElementById('header');
@@ -1046,11 +971,7 @@
 
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
-            createJobCards();
             setupSmoothScrolling();
-            
-            // Start card rotation
-            setInterval(rotateCards, 3000);
             
             // Handle scroll events
             window.addEventListener('scroll', handleScroll);
