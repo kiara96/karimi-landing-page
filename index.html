@@ -450,6 +450,160 @@
             line-height: 1.6;
         }
 
+        /* Swipeable Cards */
+        .swipe-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            margin: 0 auto 2rem;
+            perspective: 1000px;
+        }
+
+        .swipe-card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            cursor: grab;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform-origin: center;
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .swipe-card:active {
+            cursor: grabbing;
+        }
+
+        .swipe-card.swiping {
+            transition: none;
+        }
+
+        .swipe-card.swiped-left {
+            transform: translateX(-150%) rotate(-20deg);
+            opacity: 0;
+        }
+
+        .swipe-card.swiped-right {
+            transform: translateX(150%) rotate(20deg);
+            opacity: 0;
+        }
+
+        .swipe-card.top {
+            z-index: 3;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .swipe-card.middle {
+            z-index: 2;
+            transform: scale(0.95) translateY(10px);
+            opacity: 0.8;
+        }
+
+        .swipe-card.bottom {
+            z-index: 1;
+            transform: scale(0.9) translateY(20px);
+            opacity: 0.6;
+        }
+
+        .swipe-icon {
+            width: 4rem;
+            height: 4rem;
+            background: #1e293b;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .swipe-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .swipe-description {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .swipe-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .swipe-indicator {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background: #d1d5db;
+            transition: background 0.3s ease;
+        }
+
+        .swipe-indicator.active {
+            background: #1e293b;
+        }
+
+        .swipe-instructions {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .swipe-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .swipe-btn {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.25rem;
+        }
+
+        .swipe-btn.reject {
+            background: #fef2f2;
+            color: #ef4444;
+        }
+
+        .swipe-btn.reject:hover {
+            background: #fee2e2;
+        }
+
+        .swipe-btn.accept {
+            background: #f0fdf4;
+            color: #22c55e;
+        }
+
+        .swipe-btn.accept:hover {
+            background: #dcfce7;
+        }
+
         /* Team Section */
         .team-grid {
             display: grid;
@@ -793,44 +947,71 @@
         </div>
     </section>
 
-    <!-- Behind the Magic Section -->
-    <section class="section section-gray">
-        <div class="container">
-            <h2 class="section-title">Behind the magic</h2>
-            <p class="section-subtitle">Behind the playful design is a <strong>cutting-edge recommendation engine</strong> that treats hiring with the same intelligence as the best consumer apps.</p>
+         <!-- Behind the Magic Section -->
+     <section class="section section-gray">
+         <div class="container">
+             <h2 class="section-title">Behind the magic</h2>
+             <p class="section-subtitle">Behind the playful design is a <strong>cutting-edge recommendation engine</strong> that treats hiring with the same intelligence as the best consumer apps.</p>
 
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <h3 class="tech-title">Semantic breakdown</h3>
-                    <p class="tech-description">Vacancies and CVs are decomposed into skills, responsibilities, education, promotions, geographies, and more.</p>
-                </div>
-                <div class="tech-card">
-                    <h3 class="tech-title">Instruction-tuned embeddings</h3>
-                    <p class="tech-description">Each dimension is encoded with AI prompts that capture <em>intent</em>, not just keywords.</p>
-                </div>
-                <div class="tech-card">
-                    <h3 class="tech-title">Noise reduction</h3>
-                    <p class="tech-description">We standardize and enrich data to catch synonyms, misspellings, and hidden skills.</p>
-                </div>
-                <div class="tech-card">
-                    <h3 class="tech-title">Multi-channel ranking</h3>
-                    <p class="tech-description">Candidates and roles are compared across six+ perspectives, then fused into a single, fair relevance score.</p>
-                </div>
-                <div class="tech-card">
-                    <h3 class="tech-title">Human-in-the-loop controls</h3>
-                    <p class="tech-description">Recruiters adjust section weights in real time → results re-rank instantly.</p>
-                </div>
-                <div class="tech-card">
-                    <h3 class="tech-title">Explainability baked in</h3>
-                    <p class="tech-description">Every match shows <em>why</em> it fits, not just a score.</p>
-                </div>
-            </div>
+             <div class="swipe-container" id="swipeContainer">
+                 <p class="swipe-instructions">Swipe through our tech features to see how it works</p>
+                 
+                 <div class="swipe-card top" id="card1">
+                     <div class="swipe-icon">🧠</div>
+                     <h3 class="swipe-title">Semantic breakdown</h3>
+                     <p class="swipe-description">Vacancies and CVs are decomposed into skills, responsibilities, education, promotions, geographies, and more.</p>
+                 </div>
+                 
+                 <div class="swipe-card middle" id="card2">
+                     <div class="swipe-icon">🎯</div>
+                     <h3 class="swipe-title">Instruction-tuned embeddings</h3>
+                     <p class="swipe-description">Each dimension is encoded with AI prompts that capture <em>intent</em>, not just keywords.</p>
+                 </div>
+                 
+                 <div class="swipe-card bottom" id="card3">
+                     <div class="swipe-icon">🔍</div>
+                     <h3 class="swipe-title">Noise reduction</h3>
+                     <p class="swipe-description">We standardize and enrich data to catch synonyms, misspellings, and hidden skills.</p>
+                 </div>
+                 
+                 <div class="swipe-card" id="card4">
+                     <div class="swipe-icon">⚖️</div>
+                     <h3 class="swipe-title">Multi-channel ranking</h3>
+                     <p class="swipe-description">Candidates and roles are compared across six+ perspectives, then fused into a single, fair relevance score.</p>
+                 </div>
+                 
+                 <div class="swipe-card" id="card5">
+                     <div class="swipe-icon">👥</div>
+                     <h3 class="swipe-title">Human-in-the-loop controls</h3>
+                     <p class="swipe-description">Recruiters adjust section weights in real time → results re-rank instantly.</p>
+                 </div>
+                 
+                 <div class="swipe-card" id="card6">
+                     <div class="swipe-icon">💡</div>
+                     <h3 class="swipe-title">Explainability baked in</h3>
+                     <p class="swipe-description">Every match shows <em>why</em> it fits, not just a score.</p>
+                 </div>
+             </div>
 
-            <div class="card" style="background: #f8fafc; max-width: 64rem; margin: 3rem auto 0; padding: 2rem; border-radius: 1rem;">
-                <p style="color: #64748b; line-height: 1.6; font-style: italic;">The result? Matches that feel effortless on the surface, but are backed by AI rigor that outperforms naive LLM/embedding matchers.</p>
-            </div>
-        </div>
-    </section>
+             <div class="swipe-actions">
+                 <button class="swipe-btn reject" onclick="swipeCard('left')">✕</button>
+                 <button class="swipe-btn accept" onclick="swipeCard('right')">✓</button>
+             </div>
+
+             <div class="swipe-indicators" id="swipeIndicators">
+                 <div class="swipe-indicator active"></div>
+                 <div class="swipe-indicator"></div>
+                 <div class="swipe-indicator"></div>
+                 <div class="swipe-indicator"></div>
+                 <div class="swipe-indicator"></div>
+                 <div class="swipe-indicator"></div>
+             </div>
+
+             <div class="card" style="background: #f8fafc; max-width: 64rem; margin: 3rem auto 0; padding: 2rem; border-radius: 1rem;">
+                 <p style="color: #64748b; line-height: 1.6; font-style: italic;">The result? Matches that feel effortless on the surface, but are backed by AI rigor that outperforms naive LLM/embedding matchers.</p>
+             </div>
+         </div>
+     </section>
 
     <!-- Demo Section -->
     <section class="section section-white" id="demo">
@@ -969,9 +1150,119 @@
             });
         }
 
+        // Swipeable cards functionality
+        let currentCardIndex = 0;
+        let isDragging = false;
+        let startX = 0;
+        let currentX = 0;
+        let cards = [];
+
+        function initializeSwipeCards() {
+            cards = document.querySelectorAll('.swipe-card');
+            updateCardPositions();
+            setupSwipeListeners();
+        }
+
+        function updateCardPositions() {
+            cards.forEach((card, index) => {
+                card.className = 'swipe-card';
+                if (index === currentCardIndex) {
+                    card.classList.add('top');
+                } else if (index === currentCardIndex + 1) {
+                    card.classList.add('middle');
+                } else if (index === currentCardIndex + 2) {
+                    card.classList.add('bottom');
+                }
+            });
+
+            // Update indicators
+            const indicators = document.querySelectorAll('.swipe-indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentCardIndex);
+            });
+        }
+
+        function setupSwipeListeners() {
+            const topCard = cards[currentCardIndex];
+            if (!topCard) return;
+
+            topCard.addEventListener('mousedown', startDrag);
+            topCard.addEventListener('touchstart', startDrag, { passive: false });
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('touchmove', drag, { passive: false });
+            document.addEventListener('mouseup', endDrag);
+            document.addEventListener('touchend', endDrag);
+        }
+
+        function startDrag(e) {
+            isDragging = true;
+            startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+            currentX = startX;
+            
+            const topCard = cards[currentCardIndex];
+            if (topCard) {
+                topCard.classList.add('swiping');
+            }
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            
+            currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+            const deltaX = currentX - startX;
+            
+            const topCard = cards[currentCardIndex];
+            if (topCard) {
+                const rotation = (deltaX / 10) * (deltaX > 0 ? 1 : -1);
+                topCard.style.transform = `translateX(${deltaX}px) rotate(${rotation}deg)`;
+            }
+        }
+
+        function endDrag() {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const deltaX = currentX - startX;
+            const threshold = 100;
+            
+            const topCard = cards[currentCardIndex];
+            if (topCard) {
+                topCard.classList.remove('swiping');
+                topCard.style.transform = '';
+                
+                if (Math.abs(deltaX) > threshold) {
+                    // Swipe completed
+                    const direction = deltaX > 0 ? 'right' : 'left';
+                    swipeCard(direction);
+                }
+            }
+        }
+
+        function swipeCard(direction) {
+            const topCard = cards[currentCardIndex];
+            if (!topCard) return;
+
+            // Add swipe animation
+            topCard.classList.add(direction === 'right' ? 'swiped-right' : 'swiped-left');
+            
+            // Move to next card after animation
+            setTimeout(() => {
+                currentCardIndex = (currentCardIndex + 1) % cards.length;
+                updateCardPositions();
+                setupSwipeListeners();
+                
+                // Reset all cards
+                cards.forEach(card => {
+                    card.classList.remove('swiped-left', 'swiped-right');
+                });
+            }, 300);
+        }
+
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
             setupSmoothScrolling();
+            initializeSwipeCards();
             
             // Handle scroll events
             window.addEventListener('scroll', handleScroll);
