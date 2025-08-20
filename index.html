@@ -591,6 +591,64 @@
             margin-top: 1rem;
         }
 
+        /* Side Navigation Arrows */
+        .swipe-nav-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .swipe-nav-arrow {
+            position: absolute;
+            width: 3rem;
+            height: 3rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #e2e8f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            pointer-events: auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: arrowFloat 2s ease-in-out infinite;
+        }
+
+        .swipe-nav-arrow:hover {
+            background: white;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .swipe-nav-arrow.prev {
+            left: -1.5rem;
+            animation-delay: 0s;
+        }
+
+        .swipe-nav-arrow.next {
+            right: -1.5rem;
+            animation-delay: 1s;
+        }
+
+        .swipe-nav-arrow svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #64748b;
+        }
+
+        @keyframes arrowFloat {
+            0%, 100% {
+                transform: translateY(-50%) translateY(0);
+            }
+            50% {
+                transform: translateY(-50%) translateY(-5px);
+            }
+        }
+
         .swipe-btn {
             width: 3rem;
             height: 3rem;
@@ -1061,6 +1119,20 @@
              <div class="swipe-container" id="swipeContainer">
                  <p class="swipe-instructions">Swipe through our AI features to see the magic</p>
                  
+                 <!-- Side Navigation Arrows -->
+                 <div class="swipe-nav-arrows">
+                     <button class="swipe-nav-arrow prev" onclick="swipeCard('left')">
+                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                             <polyline points="15,18 9,12 15,6"></polyline>
+                         </svg>
+                     </button>
+                     <button class="swipe-nav-arrow next" onclick="swipeCard('right')">
+                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                             <polyline points="9,18 15,12 9,6"></polyline>
+                         </svg>
+                     </button>
+                 </div>
+                 
                  <div class="swipe-card top" id="card1">
                     <div class="job-title"><span style="color: #7db0e3;">Karimi</span> Understands Your Needs</div>
                     <div class="job-company">Automatic feature mining from URLs & LinkedIn</div>
@@ -1203,7 +1275,7 @@
     <!-- Team Section -->
     <section class="section section-white">
         <div class="container">
-            <h2 class="section-title">The people building Karimi for you</h2>
+            <h2 class="section-title">Say hi to the team</h2>
 
             <div class="team-grid">
                 <div class="team-card">
@@ -1231,7 +1303,7 @@
                         <div class="cta-mascot"></div>
                     </div>
                     <h2 class="cta-header">Smart, personal, and never boring</h2>
-                    <p class="cta-subheader">Time to find your next career match ❤️</p>
+                    <p class="cta-subheader">Time to find your next career match</p>
                 </div>
 
                 <div class="cta-form-container">
