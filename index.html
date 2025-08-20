@@ -806,6 +806,29 @@
             height: 1rem;
             display: inline-block;
         }
+        
+        /* Success message animations */
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1145,7 +1168,10 @@
                 </div>
 
                 <form class="email-form" onsubmit="handleEmailSubmit(event)">
-                    <input type="email" class="email-input" placeholder="Enter your email" required>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1rem;">
+                        <input type="email" class="email-input" placeholder="Enter your email" required>
+                        <input type="text" class="email-input" placeholder="Leave a message (optional)" id="commentInput" style="font-size: 1rem;">
+                    </div>
                     <button type="submit" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 1.125rem; background: white; color: #1e293b;">Join Karimi for free</button>
                 </form>
                 <p class="privacy-text">Private by default • No spam</p>
@@ -1188,8 +1214,95 @@
         function handleEmailSubmit(event) {
             event.preventDefault();
             const email = event.target.querySelector('input[type="email"]').value;
-            alert(`Thank you! We'll add ${email} to our waitlist.`);
-            event.target.reset();
+            const comment = document.getElementById('commentInput').value;
+            
+            // Show loading state
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Joining...';
+            submitBtn.disabled = true;
+            
+            // Prepare data for Google Sheets
+            const formData = {
+                email: email,
+                comment: comment || '',
+                source: 'Landing Page - CTA Section'
+            };
+            
+            // Send to Google Sheets (you'll need to replace this URL with your Apps Script web app URL)
+            submitToGoogleSheets(formData, () => {
+                // Success callback
+                showSuccessMessage(email);
+                event.target.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, (error) => {
+                // Error callback
+                alert('Sorry, something went wrong. Please try again or contact us directly.');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        }
+        
+        // Function to submit data to Google Sheets
+        function submitToGoogleSheets(data, onSuccess, onError) {
+            // Replace this URL with your Google Apps Script web app URL
+            const scriptUrl = 'https://script.google.com/macros/s/AKfycby_p_RTIcMmoYIrVM6rkajGxs45foM30bOGknmSiSajJOVmOAxpj6qPWoGgKvtQEt1C/exec';
+            
+            fetch(scriptUrl, {
+                method: 'POST',
+                mode: 'no-cors', // Important for cross-origin requests
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok || response.status === 0) {
+                    onSuccess();
+                } else {
+                    onError('Network error');
+                }
+            })
+            .catch(error => {
+                onError(error);
+            });
+        }
+        
+        // Show success message
+        function showSuccessMessage(email) {
+            // Create a nice success message instead of alert
+            const successDiv = document.createElement('div');
+            successDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #10b981;
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 0.5rem;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                animation: slideIn 0.3s ease;
+            `;
+            successDiv.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20,6 9,17 4,12"></polyline>
+                    </svg>
+                    <span>Welcome to Karimi! We'll be in touch soon.</span>
+                </div>
+            `;
+            
+            document.body.appendChild(successDiv);
+            
+            // Remove after 5 seconds
+            setTimeout(() => {
+                successDiv.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(successDiv);
+                }, 300);
+            }, 5000);
         }
 
         // Smooth scrolling for anchor links
