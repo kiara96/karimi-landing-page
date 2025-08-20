@@ -377,6 +377,118 @@
             line-height: 1.6;
         }
 
+        /* Interactive Who & Why Section */
+        .choice-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .choice-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+
+        .choice-btn:hover {
+            border-color: #1e293b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .choice-btn.active {
+            border-color: #1e293b;
+            background: #f8fafc;
+        }
+
+        .choice-icon {
+            font-size: 3rem;
+        }
+
+        .choice-btn span {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .content-container {
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
+        }
+
+        .content-slide {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.5s ease;
+        }
+
+        .content-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .content-slide.companies-content.active {
+            transform: translateX(0);
+        }
+
+        .content-slide.jobseekers-content.active {
+            transform: translateX(0);
+        }
+
+        .content-banner {
+            background: white;
+            border-radius: 1rem;
+            padding: 3rem 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .content-banner h3 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-item .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
         /* Why Karimi */
         .features-carousel {
             display: flex;
@@ -986,7 +1098,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">Meet your new career matchmaker</h1>
-                    <p class="hero-subtitle">If finding a date takes only a few swipes – why does matching a job to the right candidate feel so hard?</p>
+                    <p class="hero-subtitle">Karimi makes the right opportunities find you</p>
                     <div class="hero-buttons">
                         <a href="#cta" class="btn btn-primary btn-large">
                             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1032,84 +1144,80 @@
         </div>
     </section>
 
-    <!-- Who It's For Section -->
+    <!-- Interactive Who & Why Section -->
     <section class="section section-gray">
         <div class="container">
-            <h2 class="section-title">Who it's for</h2>
+            <h2 class="section-title">Who it's for & Why Karimi</h2>
+            <p class="section-subtitle">Choose your path and discover what Karimi can do for you</p>
 
-            <div class="who-grid">
-                <div class="who-card">
-                    <div class="who-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                    </div>
-                    <h3 class="who-title">Companies</h3>
-                    <p class="who-description">Personalized, fast, engaging recruitment that finds the right talent quickly.</p>
-                </div>
-                <div class="who-card">
-                    <div class="who-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                    </div>
-                    <h3 class="who-title">Job Seekers</h3>
-                    <p class="who-description">Private, fun, effective job discovery that respects your preferences.</p>
-                </div>
+            <!-- Choice Buttons -->
+            <div class="choice-buttons">
+                <button class="choice-btn" onclick="showContent('companies')">
+                    <span>I want to hire</span>
+                </button>
+                <button class="choice-btn" onclick="showContent('jobseekers')">
+                    <span>I want to change job</span>
+                </button>
             </div>
-        </div>
-    </section>
 
-    <!-- Why Karimi Section -->
-    <section class="section section-white">
-        <div class="container">
-            <h2 class="section-title">Why Karimi</h2>
-            <p class="section-subtitle">Playful front-end, powerful back-end</p>
+            <!-- Content Container -->
+            <div class="content-container">
+                <!-- Companies Content -->
+                <div class="content-slide companies-content" id="companiesContent">
+                    <div class="content-banner">
+                        <h3>Top Karimi Features for Companies</h3>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon">🎯</div>
+                                <h4>Smart Candidate Matching</h4>
+                                <p>AI-powered recommendations that find the perfect fit for your team</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">⚡</div>
+                                <h4>Real-time Controls</h4>
+                                <p>Adjust preferences and see results re-rank instantly</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">📊</div>
+                                <h4>Multi-dimensional Ranking</h4>
+                                <p>Compare candidates across skills, culture, and potential fit</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🔍</div>
+                                <h4>Deep Insights</h4>
+                                <p>Understand why each candidate is a great match</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="features-carousel">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="9,11 12,14 22,4"></polyline>
-                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-                        </svg>
+                <!-- Job Seekers Content -->
+                <div class="content-slide jobseekers-content" id="jobseekersContent">
+                    <div class="content-banner">
+                        <h3>Top Karimi Features for Job Seekers</h3>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon">🎯</div>
+                                <h4>Personalized Job Matching</h4>
+                                <p>Discover opportunities that truly fit your skills and preferences</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🔒</div>
+                                <h4>Private & Secure</h4>
+                                <p>Your job search stays confidential until you're ready</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🧠</div>
+                                <h4>AI Learning</h4>
+                                <p>Get smarter matches as you interact with the platform</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">💡</div>
+                                <h4>Career Insights</h4>
+                                <p>Understand your market value and growth opportunities</p>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="feature-title">Dynamic Learning</h3>
-                    <p class="feature-description">Our recommendations adapt to your swipes and feedback in real-time.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="3"></circle>
-                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Real-time Controls</h3>
-                    <p class="feature-description">Recruiters can adjust preferences and see results re-rank instantly.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Multi-dimensional Ranking</h3>
-                    <p class="feature-description">Compare candidates across skills, culture, and potential fit.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                            <circle cx="12" cy="12" r="3"></circle>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Transparent Explainability</h3>
-                    <p class="feature-description">Every match shows why it fits, not just a score.</p>
                 </div>
             </div>
         </div>
@@ -1563,6 +1671,29 @@
             }, 300);
         }
 
+        // Interactive section functionality
+        function showContent(type) {
+            // Remove active class from all buttons
+            document.querySelectorAll('.choice-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to clicked button
+            event.target.closest('.choice-btn').classList.add('active');
+            
+            // Hide all content slides
+            document.querySelectorAll('.content-slide').forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Show selected content
+            if (type === 'companies') {
+                document.getElementById('companiesContent').classList.add('active');
+            } else if (type === 'jobseekers') {
+                document.getElementById('jobseekersContent').classList.add('active');
+            }
+        }
+
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
             setupSmoothScrolling();
@@ -1570,6 +1701,9 @@
             
             // Handle scroll events
             window.addEventListener('scroll', handleScroll);
+            
+            // Show companies content by default
+            showContent('companies');
         });
     </script>
 </body>
