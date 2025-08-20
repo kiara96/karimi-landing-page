@@ -273,7 +273,7 @@
             color: #64748b;
             text-align: center;
             max-width: 64rem;
-            margin: 0 auto 3rem;
+            margin: 0 auto 2rem;
         }
 
         /* How It Works */
@@ -296,6 +296,15 @@
             text-align: center;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            animation: arrowFloat 2s ease-in-out infinite;
+        }
+
+        .step-card:nth-child(2) {
+            animation-delay: 0.7s;
+        }
+
+        .step-card:nth-child(3) {
+            animation-delay: 1.4s;
         }
 
         .step-card:hover {
@@ -1011,7 +1020,7 @@
     <!-- How It Works Section -->
     <section class="section section-white" id="how-it-works">
         <div class="container">
-            <h2 class="section-title">How it works</h2>
+            <h2 class="section-title">How Karimi works</h2>
             <p class="section-subtitle">Three easy steps to find your perfect match</p>
 
             <div class="steps-grid">
