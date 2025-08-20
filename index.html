@@ -378,25 +378,37 @@
         }
 
         /* Interactive Who & Why Section */
-        .choice-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
+        .choice-layout {
+            position: relative;
+            max-width: 32rem;
+            margin: 0 auto;
+        }
+
+        .choice-option {
+            margin-bottom: 1rem;
+            transition: all 0.5s ease;
+        }
+
+        .choice-option.slide-left {
+            transform: translateX(-100%);
+        }
+
+        .choice-option.slide-right {
+            transform: translateX(100%);
         }
 
         .choice-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            padding: 2rem;
+            width: 100%;
+            padding: 1.5rem 2rem;
             background: white;
             border: 2px solid #e2e8f0;
             border-radius: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            min-width: 200px;
+            text-align: center;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #0f172a;
         }
 
         .choice-btn:hover {
@@ -405,88 +417,66 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        .choice-btn.active {
-            border-color: #1e293b;
-            background: #f8fafc;
-        }
-
-        .choice-icon {
-            font-size: 3rem;
-        }
-
-        .choice-btn span {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: #0f172a;
-        }
-
-        .content-container {
-            position: relative;
-            overflow: hidden;
-            min-height: 400px;
-        }
-
-        .content-slide {
+        .feature-card-container {
             position: absolute;
-            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
             opacity: 0;
-            transform: translateX(100%);
+            pointer-events: none;
             transition: all 0.5s ease;
         }
 
-        .content-slide.active {
+        .feature-card-container.active {
             opacity: 1;
-            transform: translateX(0);
+            pointer-events: auto;
         }
 
-        .content-slide.companies-content.active {
-            transform: translateX(0);
-        }
-
-        .content-slide.jobseekers-content.active {
-            transform: translateX(0);
-        }
-
-        .content-banner {
+        .feature-card {
             background: white;
             border-radius: 1rem;
-            padding: 3rem 2rem;
+            padding: 2rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .feature-card-header h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
             text-align: center;
         }
 
-        .content-banner h3 {
-            font-size: 1.875rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 2rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
         .feature-item {
-            text-align: center;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
         }
 
         .feature-item .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
         }
 
-        .feature-item h4 {
-            font-size: 1.25rem;
+        .feature-text h4 {
+            font-size: 1.125rem;
             font-weight: 600;
             color: #0f172a;
             margin-bottom: 0.5rem;
         }
 
-        .feature-item p {
+        .feature-text p {
             color: #64748b;
             line-height: 1.6;
+            font-size: 0.875rem;
         }
 
         /* Why Karimi */
@@ -1150,71 +1140,94 @@
             <h2 class="section-title">Who it's for & Why Karimi</h2>
             <p class="section-subtitle">Choose your path and discover what Karimi can do for you</p>
 
-            <!-- Choice Buttons -->
-            <div class="choice-buttons">
-                <button class="choice-btn" onclick="showContent('companies')">
-                    <span>I want to hire</span>
-                </button>
-                <button class="choice-btn" onclick="showContent('jobseekers')">
-                    <span>I want to change job</span>
-                </button>
-            </div>
-
-            <!-- Content Container -->
-            <div class="content-container">
-                <!-- Companies Content -->
-                <div class="content-slide companies-content" id="companiesContent">
-                    <div class="content-banner">
-                        <h3>Top Karimi Features for Companies</h3>
-                        <div class="features-grid">
+            <!-- Interactive Choice Layout -->
+            <div class="choice-layout">
+                <!-- Companies Option -->
+                <div class="choice-option" id="companiesOption">
+                    <button class="choice-btn" onclick="showContent('companies')">
+                        <span>I want to hire</span>
+                    </button>
+                </div>
+                
+                <!-- Job Seekers Option -->
+                <div class="choice-option" id="jobseekersOption">
+                    <button class="choice-btn" onclick="showContent('jobseekers')">
+                        <span>I want to change job</span>
+                    </button>
+                </div>
+                
+                <!-- Feature Card Container -->
+                <div class="feature-card-container" id="featureCardContainer">
+                    <!-- Companies Feature Card -->
+                    <div class="feature-card companies-card" id="companiesCard">
+                        <div class="feature-card-header">
+                            <h3>Top Karimi Features for Companies</h3>
+                        </div>
+                        <div class="feature-list">
                             <div class="feature-item">
                                 <div class="feature-icon">🎯</div>
-                                <h4>Smart Candidate Matching</h4>
-                                <p>AI-powered recommendations that find the perfect fit for your team</p>
+                                <div class="feature-text">
+                                    <h4>Smart Candidate Matching</h4>
+                                    <p>AI-powered recommendations that find the perfect fit for your team</p>
+                                </div>
                             </div>
                             <div class="feature-item">
                                 <div class="feature-icon">⚡</div>
-                                <h4>Real-time Controls</h4>
-                                <p>Adjust preferences and see results re-rank instantly</p>
+                                <div class="feature-text">
+                                    <h4>Real-time Controls</h4>
+                                    <p>Adjust preferences and see results re-rank instantly</p>
+                                </div>
                             </div>
                             <div class="feature-item">
                                 <div class="feature-icon">📊</div>
-                                <h4>Multi-dimensional Ranking</h4>
-                                <p>Compare candidates across skills, culture, and potential fit</p>
+                                <div class="feature-text">
+                                    <h4>Multi-dimensional Ranking</h4>
+                                    <p>Compare candidates across skills, culture, and potential fit</p>
+                                </div>
                             </div>
                             <div class="feature-item">
                                 <div class="feature-icon">🔍</div>
-                                <h4>Deep Insights</h4>
-                                <p>Understand why each candidate is a great match</p>
+                                <div class="feature-text">
+                                    <h4>Deep Insights</h4>
+                                    <p>Understand why each candidate is a great match</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Job Seekers Content -->
-                <div class="content-slide jobseekers-content" id="jobseekersContent">
-                    <div class="content-banner">
-                        <h3>Top Karimi Features for Job Seekers</h3>
-                        <div class="features-grid">
+                    
+                    <!-- Job Seekers Feature Card -->
+                    <div class="feature-card jobseekers-card" id="jobseekersCard">
+                        <div class="feature-card-header">
+                            <h3>Top Karimi Features for Job Seekers</h3>
+                        </div>
+                        <div class="feature-list">
                             <div class="feature-item">
                                 <div class="feature-icon">🎯</div>
-                                <h4>Personalized Job Matching</h4>
-                                <p>Discover opportunities that truly fit your skills and preferences</p>
+                                <div class="feature-text">
+                                    <h4>Personalized Job Matching</h4>
+                                    <p>Discover opportunities that truly fit your skills and preferences</p>
+                                </div>
                             </div>
                             <div class="feature-item">
                                 <div class="feature-icon">🔒</div>
-                                <h4>Private & Secure</h4>
-                                <p>Your job search stays confidential until you're ready</p>
+                                <div class="feature-text">
+                                    <h4>Private & Secure</h4>
+                                    <p>Your job search stays confidential until you're ready</p>
+                                </div>
                             </div>
                             <div class="feature-item">
                                 <div class="feature-icon">🧠</div>
-                                <h4>AI Learning</h4>
-                                <p>Get smarter matches as you interact with the platform</p>
+                                <div class="feature-text">
+                                    <h4>AI Learning</h4>
+                                    <p>Get smarter matches as you interact with the platform</p>
+                                </div>
                             </div>
                             <div class="feature-item">
                                 <div class="feature-icon">💡</div>
-                                <h4>Career Insights</h4>
-                                <p>Understand your market value and growth opportunities</p>
+                                <div class="feature-text">
+                                    <h4>Career Insights</h4>
+                                    <p>Understand your market value and growth opportunities</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1673,24 +1686,35 @@
 
         // Interactive section functionality
         function showContent(type) {
-            // Remove active class from all buttons
-            document.querySelectorAll('.choice-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            const companiesOption = document.getElementById('companiesOption');
+            const jobseekersOption = document.getElementById('jobseekersOption');
+            const featureCardContainer = document.getElementById('featureCardContainer');
+            const companiesCard = document.getElementById('companiesCard');
+            const jobseekersCard = document.getElementById('jobseekersCard');
             
-            // Add active class to clicked button
-            event.target.closest('.choice-btn').classList.add('active');
+            // Reset all elements
+            companiesOption.classList.remove('slide-left', 'slide-right');
+            jobseekersOption.classList.remove('slide-left', 'slide-right');
+            featureCardContainer.classList.remove('active');
+            companiesCard.style.display = 'none';
+            jobseekersCard.style.display = 'none';
             
-            // Hide all content slides
-            document.querySelectorAll('.content-slide').forEach(slide => {
-                slide.classList.remove('active');
-            });
-            
-            // Show selected content
             if (type === 'companies') {
-                document.getElementById('companiesContent').classList.add('active');
+                // Slide companies option to the right
+                companiesOption.classList.add('slide-right');
+                // Slide jobseekers option to the left
+                jobseekersOption.classList.add('slide-left');
+                // Show companies feature card
+                companiesCard.style.display = 'block';
+                featureCardContainer.classList.add('active');
             } else if (type === 'jobseekers') {
-                document.getElementById('jobseekersContent').classList.add('active');
+                // Slide companies option to the left
+                companiesOption.classList.add('slide-left');
+                // Slide jobseekers option to the right
+                jobseekersOption.classList.add('slide-right');
+                // Show jobseekers feature card
+                jobseekersCard.style.display = 'block';
+                featureCardContainer.classList.add('active');
             }
         }
 
