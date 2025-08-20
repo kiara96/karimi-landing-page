@@ -273,7 +273,7 @@
             color: #64748b;
             text-align: center;
             max-width: 64rem;
-            margin: 0 auto 2rem;
+            margin: 0 auto 3rem;
         }
 
         /* How It Works */
@@ -295,20 +295,41 @@
             padding: 2rem;
             text-align: center;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            animation: arrowFloat 2s ease-in-out infinite;
-        }
-
-        .step-card:nth-child(2) {
-            animation-delay: 0.7s;
-        }
-
-        .step-card:nth-child(3) {
-            animation-delay: 1.4s;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
         }
 
         .step-card:hover {
             transform: translateY(-5px);
+            min-height: 350px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-details {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        .step-card:hover .step-details {
+            opacity: 1;
+            max-height: 200px;
+        }
+
+        .step-details p {
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #475569;
+        }
+
+        .step-details p:last-child {
+            margin-bottom: 0;
         }
 
         .step-number {
@@ -1028,16 +1049,28 @@
                     <div class="step-number">1</div>
                     <h3 class="step-title">Create your profile</h3>
                     <p class="step-description">Set up your profile or vacancy in minutes with our intuitive interface.</p>
+                    <div class="step-details">
+                        <p><strong>For Job Seekers:</strong> Upload your CV, add skills, experience, and career goals. Our AI will help you highlight your strengths.</p>
+                        <p><strong>For Companies:</strong> Create detailed job postings with requirements, responsibilities, and company culture. Set your hiring priorities.</p>
+                    </div>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
                     <h3 class="step-title">Swipe & interact</h3>
                     <p class="step-description">Start swiping and the system learns from your preferences in real-time.</p>
+                    <div class="step-details">
+                        <p><strong>Smart Learning:</strong> Every swipe teaches our AI about your preferences. Like a dating app, but for professional matches.</p>
+                        <p><strong>Real-time Feedback:</strong> Adjust criteria on the fly. The system adapts instantly to your changing needs.</p>
+                    </div>
                 </div>
                 <div class="step-card">
                     <div class="step-number">3</div>
                     <h3 class="step-title">Get smarter matches</h3>
                     <p class="step-description">Receive instant insights and matches that get better with every interaction.</p>
+                    <div class="step-details">
+                        <p><strong>AI-Powered Insights:</strong> Get detailed explanations for every match. Understand why someone is perfect for the role.</p>
+                        <p><strong>Continuous Improvement:</strong> Matches get smarter over time as the system learns your preferences and company culture.</p>
+                    </div>
                 </div>
             </div>
         </div>
